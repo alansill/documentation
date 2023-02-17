@@ -65,6 +65,14 @@ If changes are made to one or more of these parameters, the `grub2-mkconfig` com
 [root] # grub2-mkconfig –o /boot/grub2/grub.cfg
 ```
 
+if you are using BIOS, or 
+
+```
+grub2-mkconfig -o /etc/grub2-efi.cfg
+```
+
+f you are using UEFI booting.
+
 * GRUB2 looks for the compressed kernel image (the `vmlinuz` file) in the `/boot` directory.
 * GRUB2 loads the kernel image into memory and extracts the contents of the `initramfs` image file into a temporary folder in memory using the `tmpfs` file system.
 
@@ -119,7 +127,8 @@ A `/boot/grub2/user.cfg` file will be created if it was not already present. It 
 GRUB2_PASSWORD=grub.pbkdf2.sha512.10000.CC6F56....A21
 ```
 
-* Recreate the configuration file with the `grub2-mkconfig` command:
+* Recreate the configuration file with the `grub2-mkconfig -o /boot/grub2/grub.cfg` command if you are using BIOS, 
+* or `grub2-mkconfig -o /etc/grub2-efi.cfg` if you are using UEFI booting. For example, for BIOS booting:
 
 ```
 [root]# grub2-mkconfig -o /boot/grub2/grub.cfg
